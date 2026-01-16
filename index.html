@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Search for a city to explore its weather, country details and photos" />
+  <title>Globetrotter</title>
+  <link rel="stylesheet" href="./src/style.css" />
+  <link rel="icon" href="./public/favicon.svg">
+</head>
+
+<body data-theme="light">
+  <header class="main-header">
+    <div class="header-left">
+      <img src="/public/earth-logo.svg" alt="Logo" class="logo" />
+      <h1>Globetrotter</h1>
+    </div>
+
+    <div class="header-right">
+
+
+      <button id="themeToggle" class="icon-btn">
+        <svg id="sunIcon" class="theme-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+          stroke-width="1.5" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+        </svg>
+
+
+        <svg id="moonIcon" class="theme-icon hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+          stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0
+          1112.998 2.248a7.5 7.5 0
+          008.754 12.754z" />
+        </svg>
+        <span id="themeLabel" class="theme-label"></span>
+      </button>
+
+      <button type="button" id="historyBtn" class="icon-btn"> <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+          viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="history-icon">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+        </svg>
+        <span id="history-span">History</span>
+      </button>
+
+    </div>
+  </header>
+  <main>
+
+    <form class="search-form">
+      <input type="text" class="search-input" placeholder="Enter city..." />
+      <button type="submit" class="search-button">Search city</button>
+    </form>
+    <div id="spinner" class="spinner hidden" aria-label="Loading"></div>
+    <div class="error hidden" id="errorCard"></div>
+
+    <div class="content-card hidden">
+
+      <div class="city-card hidden"></div>
+      <div class="forecast-section hidden">
+        <h2 class="forecast-title"></h2>
+        <div class="forecast-card"></div>
+      </div>
+      <div class="photo-section">
+        <h2 class="photo-title"></h2>
+
+        <div class="images-card hidden"></div>
+      </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal modal-photo hidden" id="photoModal">
+      <div class="modal-overlay"></div>
+      <div class="modal-content">
+        <button class="modal-close">❌</button>
+        <img class="modal-image" />
+        <p class="modal-description"></p>
+        <p class="modal-author"></p>
+        <p class="modal-likes"></p>
+        <a class="modal-link" target="_blank">View on Unsplash</a>
+      </div>
+    </div>
+
+    <div class="empty-state" id="emptyState">
+      <img src="./public/light.png" alt="Wolrd map">
+      <h2>Discover cities around the world!</h2>
+      <p>Search for a city to explore its weather, country details and photos</p>
+    </div>
+
+    <div class="modal modal-history hidden" id="historyModal">
+      <div class="modal-overlay"></div>
+      <div class="modal-content history-modal">
+        <button class="modal-close" id="historyClose">❌</button>
+
+        <h2>Search history</h2>
+
+        <ul id="historyList"></ul>
+        <button id="clearHistory" class="clear-history">
+          Clear all history
+        </button>
+      </div>
+    </div>
+  </main>
+  <footer class="main-footer">
+    <p>Globetrotter © 2026. Built for city exploration.</p>
+  </footer>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+
+</html>
