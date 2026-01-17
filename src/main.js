@@ -56,11 +56,6 @@ searchForm.addEventListener("submit", async (e) => {
     searchInput.value = "";
 
     showContent();
-
-    console.log(forecastData);
-
-    console.log(countryData);
-    console.log(photoData);
   } catch (error) {
     console.error(error);
     showError(error.message);
